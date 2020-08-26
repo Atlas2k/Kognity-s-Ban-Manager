@@ -4,16 +4,16 @@ import sqlite3
 def addBanNonIssued():
     data = sqlite3.connect('theExcommunicated.db')
     basket = {'Steam ID': 0, 'Staff Member': 0, 'Offender': 0,
-              'Offence': 0, 'Server': 0, 'Punishment': 0, 'Date': 0,
-              'Issue': 0, 'Notes': 0}
+              'Offence': 0, 'Server': 0, 'Punishment': 0,
+              'Date': 0, 'Notes': 0}
     for key in basket:
         basket[key] = input('Please enter the %s: ' % key)
     data.execute("""INSERT INTO "Non Issued" VALUES ('%s', '%s', '%s', '%s',\
-                '%s', '%s', '%s', '%s', '%s')"""
+                '%s', '%s', '%s', '%s')"""
                  % (basket['Steam ID'], basket['Staff Member'],
                     basket['Offender'], basket['Offence'],
-                    basket['Server'], basket['Punishment'], basket['Date'],
-                    basket['Issue'], basket['Notes']))
+                    basket['Server'], basket['Punishment'],
+                    basket['Date'], basket['Notes']))
     data.commit()
     data.close()
 
@@ -21,16 +21,16 @@ def addBanNonIssued():
 def addBanIssued():
     data = sqlite3.connect('theExcommunicated.db')
     basket = {'Steam ID': 0, 'Staff Member': 0, 'Offender': 0,
-              'Offence': 0, 'Server': 0, 'Punishment': 0, 'Date': 0,
-              'Issue': 0, 'Notes': 0}
+              'Offence': 0, 'Server': 0, 'Punishment': 0,
+              'Date': 0, 'Notes': 0}
     for key in basket:
         basket[key] = input('Please enter the %s: ' % key)
     data.execute("INSERT INTO issued VALUES ('%s', '%s', '%s', '%s',\
-                '%s', '%s', '%s', '%s', '%s')"
+                '%s', '%s', '%s', '%s')"""
                  % (basket['Steam ID'], basket['Staff Member'],
                     basket['Offender'], basket['Offence'],
-                    basket['Server'], basket['Punishment'], basket['Date'],
-                    basket['Issue'], basket['Notes']))
+                    basket['Server'], basket['Punishment'],
+                    basket['Date'], basket['Notes']))
     data.commit()
     data.close()
 
@@ -72,8 +72,7 @@ def viewNonIssued():
         print('Server:', row[4])
         print('Punishment:', row[5])
         print('Date:', row[6])
-        print('Issue:', row[7])
-        print('Notes:', row[8])
+        print('Notes:', row[7])
     data.commit()
     data.close()
 
@@ -93,7 +92,6 @@ def viewIssued():
         print('Server:', row[4])
         print('Punishment:', row[5])
         print('Date:', row[6])
-        print('Issue:', row[7])
-        print('Notes:', row[8])
+        print('Notes:', row[7])
     data.commit()
     data.close()
