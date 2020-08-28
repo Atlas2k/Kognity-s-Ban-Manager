@@ -95,3 +95,23 @@ def viewIssued():
         print('Notes:', row[7])
     data.commit()
     data.close()
+
+
+def removeNonIssued():
+    data = sqlite3.connect('theExcommunicated.db')
+    identifier = input('Please enter the Steam ID: ')
+    data.execute("""DELETE FROM "Non Issued" WHERE "Steam ID"='%s'"""
+                 % identifier)
+    print('Entries with Steaam ID: %s have been deleted.' % identifier)
+    data.commit()
+    data.close()
+
+
+def removeIssued():
+    data = sqlite3.connect('theExcommunicated.db')
+    identifier = input('Please enter the Steam ID: ')
+    data.execute("""DELETE FROM "Issued" WHERE "Steam ID"='%s'"""
+                 % identifier)
+    print('Entries with Steaam ID: %s have been deleted.' % identifier)
+    data.commit()
+    data.close()
